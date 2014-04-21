@@ -3,7 +3,9 @@
     {{#if loadingTags}}
       loading...
     {{else }}
-      {{combobox content=replyTags none=0 valueAttribute="name" valueBinding="controller.replyTag" }}
+      {{combobox content=replyTags none="none" valueAttribute="name" valueBinding="controller.replyTag" }}
+
+      {{view Discourse.TagAutocompleteView modelBindings="controller.tags" }}
 
       <div {{action toggleAutoanim}} {{bind-attr class=autoanimcls}}>
         <div class="onoffswitch-label">

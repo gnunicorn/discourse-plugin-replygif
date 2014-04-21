@@ -7,6 +7,14 @@
         overflow-y: scroll;
     }
 
+    .ac-wrap {
+        display: inline-block;
+    }
+
+    input.autocomplete {
+      width: 40%;
+    }
+
     // on-off-switch for locator
     .onoffswitch {
       position: relative;

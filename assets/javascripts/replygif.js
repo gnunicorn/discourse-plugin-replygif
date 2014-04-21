@@ -26,10 +26,45 @@ Discourse.ReplygifItemView = Discourse.View.extend({
             return this.get("model.file").replace("/i/", "/thumbnail/");
         }
     }.property("model.file", "selected", "autoanim")
-})
+});
+
+Discourse.TagAutocompleteView = Discourse.View.extend({
+    tagName: "input",
+    attributeBindings: ["tagType:type"],
+    tagType: "text",
+    initAutocomplete: function(){
+        var view = this;
+        this.$().autocomplete({
+            template: Handlebars.compile("<div class='autocomplete'>" +
+                                    "<ul>" +
+                                    "{{#each options}}" +
+                                      "<li>" +
+                                          "{{title}}" +
+                                      "</li>" +
+                                      "{{/each}}" +
+                                    "</ul>" +
+                                  "</div>"),
+            single: true,
+            dataSource: function(term){
+              var regex = new RegExp(term, "i");
+              return view.get('controller.tags').filter(function(tag){
+                return !tag.reaction && tag.title.match(regex);
+              }).slice(0, 10);
+            },
+            transformComplete: function(a) {
+              return a.title;
+            },
+            onChangeItems: function(items){
+              view.get("controller.selectedTags").setObjects(items);
+              view.get("controller").refresh();
+              view.$().autocomplete({ cancel: true })
+            }
+        });
+    }.on("didInsertElement")
+});
 
 Discourse.ReplygifView = Discourse.ModalBodyView.extend({
-    title: function() {return I18n.t("reply_gif.title"); }.property(),
+  title: function() {return I18n.t("reply_gif.title"); }.property()
 });
 
 Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFunctionality, {
@@ -72,9 +107,20 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
 
   refresh: function() {
     this.set("loading", true);
-    var URL = "http://replygif.net/api/gifs?api-key=39YAprx5Yi";
+    var URL = "http://replygif.net/api/gifs?api-key=39YAprx5Yi",
+        to_check = false;
     if (this.get("replyTag")){
         URL += "&reply=" + this.get("replyTag");
+        to_check = true;
+    }
+    if (this.get("selectedTags").length){
+        URL += "&tag-operator=and&tag=" + this.get("selectedTags").join(",")
+        to_check = true;
+    }
+    if (!to_check){
+        this.get("currentGifs").setObjects([]);
+        this.set("loading", false);
+        return;
     }
     Discourse.ajax(URL).then(function(resp){
         this.get("currentGifs").setObjects(resp);
@@ -87,6 +133,9 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
     this.setProperties({"loading": true, "tags": [], "replyTag": ""});
 
     this.addObserver("replyTag", function(){
+        this.refresh();
+    }.bind(this))
+    this.addObserver("selectedTags", function(){
         this.refresh();
     }.bind(this))
 
