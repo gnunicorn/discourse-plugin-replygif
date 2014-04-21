@@ -3,7 +3,7 @@
     {{#if loadingTags}}
       loading...
     {{else }}
-      {{combobox content=replyTags none="none" valueAttribute="name" valueBinding="controller.replyTag" }}
+      {{combobox content=replyTags none="reply_gif.none" valueAttribute="name" valueBinding="controller.replyTag" }}
 
       {{view Discourse.TagAutocompleteView modelBindings="controller.tags" }}
 
@@ -25,7 +25,7 @@
           {{#view Discourse.ReplygifItemView model=this autoanimBinding="controller.autoanim"}}
             <img class="replygif-img" {{bind-attr src=view.imagePath}}>
             {{#if view.selected}}
-              <button class="btn btn-primary" {{action "pickItem" target=view}}>{{i18n select}}</button>
+              <button class="btn btn-primary" {{action "pickItem" target=view}}>{{i18n "reply_gif.select"}}</button>
             {{/if}}
           {{/view}}
         {{/each}}

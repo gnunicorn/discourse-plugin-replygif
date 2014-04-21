@@ -2,4 +2,5 @@ en:
   js:
     reply_gif:
       title: "Pick ReplyGif"
-    none: "(none)"
+      none: "(none)"
+      select: "select"
