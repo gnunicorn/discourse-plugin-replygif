@@ -4,6 +4,13 @@
       loading...
     {{else }}
       {{combobox content=replyTags none=0 valueAttribute="name" valueBinding="controller.replyTag" }}
+
+      <div {{action toggleAutoanim}} {{bind-attr class=autoanimcls}}>
+        <div class="onoffswitch-label">
+          <div class="onoffswitch-inner"></div>
+          <div class="onoffswitch-switch"></div>
+        </div>
+      </div>
     {{/if}}
   </div>
 
@@ -13,7 +20,7 @@
     {{else}}
       <div class="replygif-box">
         {{#each currentGifs}}
-          {{#view Discourse.ReplygifItemView model=this}}
+          {{#view Discourse.ReplygifItemView model=this autoanimBinding="controller.autoanim"}}
             <img class="replygif-img" {{bind-attr src=view.imagePath}}>
             {{#if view.selected}}
               <button class="btn btn-primary" {{action "pickItem" target=view}}>{{i18n select}}</button>

@@ -7,6 +7,9 @@ Discourse.ReplygifItemView = Discourse.View.extend({
     classNames: ["replygif-imgwrap"],
 
     click: function() {
+        if (this.get("autoanim")){
+            return this.send("pickItem");
+        }
         this.set("selected", !this.get("selected"))
     },
 
@@ -17,12 +20,12 @@ Discourse.ReplygifItemView = Discourse.View.extend({
     },
 
     imagePath: function(){
-        if (this.get("selected")){
+        if (this.get("selected") || this.get("autoanim")){
             return this.get("model.file");
         } else {
             return this.get("model.file").replace("/i/", "/thumbnail/");
         }
-    }.property("model.file", "selected")
+    }.property("model.file", "selected", "autoanim")
 })
 
 Discourse.ReplygifView = Discourse.ModalBodyView.extend({
@@ -33,7 +36,12 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
   loading: true,
   tags: [],
   currentGifs: [],
+  autoanim: false,
   selectedTags: [],
+
+  autoanimcls: function(){
+    return "onoffswitch" +  (this.get("autoanim") ? " checked": "");
+  }.property("autoanim"),
 
   loadingTags: function(){
     return this.get("tags").length === 0;
@@ -43,7 +51,10 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
     imageSelected: function(imageUrl){
         this.composerView.addMarkdown("\n![](" + imageUrl +")\n");
         this.send('hideModal');
-      }
+      },
+    toggleAutoanim: function(){
+        this.set("autoanim", !this.get("autoanim"));
+    },
   },
 
   popularTags: function(){
