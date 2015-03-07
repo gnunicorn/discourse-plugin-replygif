@@ -3,10 +3,12 @@
     {{#if loadingTags}}
       loading...
     {{else }}
-      {{combobox content=replyTags none="reply_gif.none" valueAttribute="name" valueBinding="controller.replyTag" }}
-
-      {{view Discourse.TagAutocompleteView modelBindings="controller.tags" }}
-
+      <div class="combobox">
+        {{combo-box content=replyTags none="reply_gif.none" valueAttribute="name" valueBinding="controller.replyTag" }}
+      </div>
+      <div class="tags">
+        {{view Discourse.TagAutocompleteView modelBindings="controller.tags" }}
+      </div>
       <div {{action toggleAutoanim}} {{bind-attr class=autoanimcls}}>
         <div class="onoffswitch-label">
           <div class="onoffswitch-inner"></div>
