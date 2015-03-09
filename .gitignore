@@ -9,3 +9,4 @@ test/dummy/.sass-cache
 auto_generated
 Gemfile.lock
 .DS_Store
+*.iml
