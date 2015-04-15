@@ -107,7 +107,7 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
 
   refresh: function() {
     this.set("loading", true);
-    var URL = "http://replygif.net/api/gifs?api-key=39YAprx5Yi",
+    var URL = "https://replygif.net/api/gifs?api-key=39YAprx5Yi",
         to_check = false;
     if (this.get("replyTag")){
         URL += "&reply=" + this.get("replyTag");
@@ -139,7 +139,7 @@ Discourse.ReplygifController = Discourse.Controller.extend(Discourse.ModalFuncti
         this.refresh();
     }.bind(this))
 
-    Discourse.ajax("http://replygif.net/api/tags?api-key=39YAprx5Yi").then(function(resp){
+    Discourse.ajax("https://replygif.net/api/tags?api-key=39YAprx5Yi").then(function(resp){
         this.set("tags", resp);
         this.set("replyTag", this.get("replyTags")[0].name);
         this.refresh();
