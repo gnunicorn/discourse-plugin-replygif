@@ -1,0 +1,11 @@
+.composer-help-modal {
+  .composer-help-content {
+    max-height: 350px;
+    min-height: 200px;
+    overflow-y: scroll;
+  }
+}
+
+.wmd-composer-help-button:before {
+  content: "\f128"
+}

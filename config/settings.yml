@@ -1,0 +1,7 @@
+plugins:
+  replygif_enabled:
+    default: true
+    client: true
+  replygif_api_key:
+    default: ''
+    client: true
