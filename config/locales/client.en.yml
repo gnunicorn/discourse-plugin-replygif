@@ -3,3 +3,5 @@ en:
     replygif:
       composer_button_text: "Open ReplyGif"
       modal_title: "Pick ReplyGif"
+      none: "None"
+      autoanimate: "Auto Animate?"
