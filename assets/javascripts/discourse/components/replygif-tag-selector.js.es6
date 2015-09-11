@@ -22,7 +22,7 @@ export default TextField.extend({
         self.set('tags', items.join(","));
         selected = items;
       }
-    }.bind(this));
+    });
   }.on('didInsertElement'),
 
   _removeAutocomplete: function() {
