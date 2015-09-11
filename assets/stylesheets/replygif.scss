@@ -27,6 +27,11 @@
     float: left;
     width: 210px;
   }
+  
+  div.autoanimate {
+    float: right;
+    white-space: nowrap;
+  }
 
   input.replygif-switch:empty
   {
