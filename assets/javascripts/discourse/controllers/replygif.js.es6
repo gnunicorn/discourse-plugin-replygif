@@ -55,11 +55,11 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
     this.addObserver("selectedCategory", function() {
       this.refresh();
-    }).bind(this);
+    }.bind(this));
 
     this.addObserver("selectedTags", function() {
       this.refresh();
-    }).bind(this);
+    }.bind(this));
 
     Discourse.ajax(this.getUrl("replies")).then(
       function(resp) {
