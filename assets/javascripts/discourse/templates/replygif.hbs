@@ -1,27 +1,21 @@
 <div class="modal-body replygif-modal" style="overflow: visible">
-    <div>
-        {{#if loadingTags}}
-            {{i18n loading}}
-        {{else }}
-            <div class="categories">
-                {{combo-box content=replyTags none="replygif.none" valueAttribute="name" value="controller.replyCategories" }}
-            </div>
-            <div class="tags">
-            </div>
-            <div class="autoanimate">
-                <div>
-                    <input type="checkbox" id="replygif-autoanimate-switch" name="replygif-autoanimate" class="replygif-switch" />
-                    <label for="replygif-autoanimate-switch">{{i18n "replygif.autoanimate"}}</label>
-                </div>
-            </div>
-        {{/if}}
-    </div>
-    <div class="replygif-content">
-        {{#if loadingResults}}
-            {{i18n loading}}
-        {{else}}
-            <div class="replygif-box">
-            </div>
-        {{/if}}
-    </div>
+  <div>
+    {{#if loadingTags}}
+      {{i18n loading}}
+    {{else }}
+      <div class="categories">
+        {{combo-box name="categories" valueAttribute="title" value="controller.selectedCategory" nameProperty="title" content=filterCategories none="replygif.none" }}
+      </div>
+      <div class="tags">
+      </div>
+    {{/if}}
+  </div>
+  <div class="replygif-content">
+    {{#if loading}}
+      {{i18n loading}}
+    {{else}}
+      <div class="replygif-box">
+      </div>
+    {{/if}}
+  </div>
 </div>
