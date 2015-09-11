@@ -12,7 +12,7 @@ export default TextField.extend({
       disabled: this.get('disabled'),
 
       dataSource: function(term) {
-        return self.get("datasource").filter(function(item) { return item.title.contains(term); }).uniq();
+        return self.get("datasource").filterProperty('title', term).uniq();
       },
 
       onChangeItems: function(items) {
