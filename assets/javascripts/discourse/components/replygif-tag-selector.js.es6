@@ -1,7 +1,7 @@
 import TextField from 'discourse/components/text-field';
 
 export default TextField.extend({
-  datasource: "",
+  datasource: [],
 
   _initializeAutocomplete: function() {
     var self = this,
@@ -12,7 +12,7 @@ export default TextField.extend({
       disabled: this.get('disabled'),
 
       dataSource: function(term) {
-        return this.get("datasource").filter(function(item) { return item.title.contains(term); }).uniq();
+        return self.get("datasource").filter(function(item) { return item.title.contains(term); }).uniq();
       },
 
       onChangeItems: function(items) {
@@ -22,7 +22,7 @@ export default TextField.extend({
         self.set('tags', items.join(","));
         selected = items;
       }
-    });
+    }.bind(this));
   }.on('didInsertElement'),
 
   _removeAutocomplete: function() {
