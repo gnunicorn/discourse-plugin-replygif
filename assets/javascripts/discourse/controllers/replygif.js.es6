@@ -64,7 +64,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     Discourse.ajax(this.getUrl("replies")).then(
       function(resp) {
         this.set("categories", resp);
-        this.set("selectedCategory", this.get("filterCategories")[0].name);
+        this.set("selectedCategory", this.get("filterCategories")[0].title);
         this.refresh();
       }.bind(this)
     );
