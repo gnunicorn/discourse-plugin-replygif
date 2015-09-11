@@ -3,7 +3,7 @@ export default Em.Component.extend({
     render: function(buffer) {
         //buffer.push(this.get("model.parsedContent"));
     },
-    parsedContentChanged: function() {
-        this.rerender();
-    }.observes('model.parsedContent')
+    //parsedContentChanged: function() {
+    //    this.rerender();
+    //}.observes('model.parsedContent')
 });
