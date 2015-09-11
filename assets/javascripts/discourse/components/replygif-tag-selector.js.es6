@@ -12,7 +12,11 @@ export default TextField.extend({
       disabled: this.get('disabled'),
 
       dataSource: function(term) {
-        return self.get("datasource").filterProperty('title', term).uniq();
+        search = term.toLowerCase();
+        return self.get("datasource").filter(function(item) {
+          return item.title.toLowerCase().match(search);
+        }).uniq();
+        }
       },
 
       onChangeItems: function(items) {
