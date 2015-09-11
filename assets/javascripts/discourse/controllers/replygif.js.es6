@@ -71,6 +71,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
   },
 
   getUrl: function(path) {
-    return siteSettings.replygif_api_url + path + "?api-key=" + siteSettings.replygif_api_key;
+    return this.siteSettings.replygif_api_url + path + "?api-key=" + this.siteSettings.replygif_api_key;
   }
 });
