@@ -6,7 +6,6 @@
 
 enabled_site_setting :replygif_enabled
 
-#register_asset "javascripts/admin/templates/site_settings/setting_text.hbs"
-#register_asset "javascripts/discourse/templates/composer-help.hbs"
+register_asset "javascripts/discourse/templates/replygif.hbs"
 
 register_asset 'stylesheets/replygif.scss'

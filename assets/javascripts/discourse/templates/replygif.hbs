@@ -1,0 +1,9 @@
+<div class="modal-body replygif-modal" style="overflow: visible">
+    {{#if loadingTags}}
+        {{i18n loading}}
+    {{else }}
+        <div class="replygif-content">
+            {{replygif-content model=this}}
+        </div>
+    {{/if}}
+</div>

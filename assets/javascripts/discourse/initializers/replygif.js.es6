@@ -10,8 +10,8 @@ export default
         ApplicationRoute.reopen({
             actions: {
                 showReplyGif: function (composerView) {
-                    //showModal('composer-help');
-                    //this.controllerFor('composer-help').setProperties({composerView: composerView});
+                    showModal('replygif');
+                    this.controllerFor('replygif').setProperties({composerView: composerView});
                 }
             }
         });
