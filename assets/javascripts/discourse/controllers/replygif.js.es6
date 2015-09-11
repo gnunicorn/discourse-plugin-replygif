@@ -15,8 +15,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   }.property("categories"),
 
   filterCategories: function() {
-    return this.get("categories").filter(function(item) { return item.title.length > 0; })
-             .mapBy("title").uniq();
+    return this.get("categories").filter(function(item) { return item.title.length > 0; }).uniq();
   }.property("categories"),
 
   refresh: function() {
@@ -60,7 +59,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
     Discourse.ajax(this.getUrl("replies")).then(
       function(resp) {
         this.set("categories", resp);
-        this.set("selectedCategory", this.get("filterCategories")[0]);
+        this.set("selectedCategory", this.get("filterCategories")[0].title);
         this.refresh();
       }.bind(this)
     );
