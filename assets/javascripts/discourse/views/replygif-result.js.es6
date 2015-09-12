@@ -8,7 +8,7 @@ export default Ember.View.extend(StringBuffer, {
   rawTemplate: "replygif-result.raw",
 
   click: function() {
-    return this.send("pickItem");
+//    return this.send("pickItem");
     this.set("selected", !this.get("selected"))
   },
 
