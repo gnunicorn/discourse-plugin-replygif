@@ -14,16 +14,16 @@ export default Ember.View.extend(StringBuffer, {
 
   actions: {
     pickItem: function(ev){
-      this.get("controller").send("imageSelected", this.get("datasource.file"))
+      this.get("controller").send("imageSelected", this.get("result.file"))
     }
   },
 
   imagePath: function(){
     if (this.get("selected")) {
-      return this.get("datasource.file");
+      return this.get("result.file");
     } else {
-      return this.get("datasource.file").replace("/i/", "/thumbnail/");
+      return this.get("result.file").replace("/i/", "/thumbnail/");
     }
-  }.property("datasource.file", "selected")
+  }.property("result.file", "selected")
 
 });
