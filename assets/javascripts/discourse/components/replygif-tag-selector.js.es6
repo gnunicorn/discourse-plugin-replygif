@@ -2,6 +2,7 @@ import TextField from 'discourse/components/text-field';
 
 export default TextField.extend({
   datasource: [],
+  search: "",
 
   _initializeAutocomplete: function() {
     var self = this,
@@ -12,9 +13,10 @@ export default TextField.extend({
       disabled: this.get('disabled'),
 
       dataSource: function(term) {
-        search = term.toLowerCase();
+        self.set("search", term.toLowerCase());
+        var searchTerm = self.get("search");
         return self.get("datasource").filter(function(item) {
-          return item.title.toLowerCase().match(search);
+          return item.title.toLowerCase().match(searchTerm);
         }).uniq();
       },
 
