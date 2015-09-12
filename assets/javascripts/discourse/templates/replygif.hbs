@@ -5,7 +5,8 @@
     {{else }}
       <div class="categories">
         <label for="categories">Categories</label>
-        {{combo-box name="categories" valueAttribute="title" value="controller.selectedCategory" nameProperty="title" content=filterCategories none="replygif.none" }}
+        {{combo-box name="categories" valueAttribute="title" value=controller.selectedCategory
+          nameProperty="title" content=filterCategories none="replygif.none" }}
       </div>
       <div class="tags">
         <label for="replygif-tag-selector">Tags</label>
