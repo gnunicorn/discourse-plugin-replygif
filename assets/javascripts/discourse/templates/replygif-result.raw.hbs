@@ -1,4 +1,4 @@
-<img class="replygif-img" src="{{imagePath}}">
+<img class="replygif-img" {{bind-attr src=imagePath}}">
 {{#if selected}}
   <button class="btn btn-primary" {{action "pickItem" target=view}}>{{i18n "replygif.select"}}</button>
 {{/if}}
