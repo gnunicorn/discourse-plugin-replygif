@@ -7,8 +7,11 @@ export default Ember.View.extend(StringBuffer, {
   classNames: ["replygif-imgwrap"],
   rawTemplate: "replygif-result.raw",
 
+  selectedChanged: function() {
+    this.rerender();
+  }.observe("selected"),
+
   click: function() {
-//    return this.send("pickItem");
     this.set("selected", !this.get("selected"))
   },
 
