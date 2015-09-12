@@ -4,7 +4,7 @@ export default Ember.View.extend(StringBuffer, {
   tagName: "div",
   selected: false,
   classNames: ["replygif-imgwrap"],
-  itemViewClass: "replygif-result",
+  //itemViewClass: "replygif-result",
 
   click: function() {
     return this.send("pickItem");
