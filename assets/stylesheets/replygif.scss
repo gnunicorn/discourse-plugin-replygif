@@ -12,6 +12,7 @@
 
   .ac-wrap {
     display: inline-block;
+    width: 100%;
   }
 
   input.autocomplete {
@@ -21,11 +22,19 @@
   div.categories {
     float: left;
     width: 50%;
+
+    .combobox {
+      width: 95%;
+    }
   }
 
   div.tags {
     float: left;
     width: 50%;
+
+    .ac-wrap {
+      width: 95%;
+    }
   }
   
   div.autoanimate {
