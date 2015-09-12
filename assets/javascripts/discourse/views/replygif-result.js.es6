@@ -16,12 +16,15 @@ export default Ember.View.extend(StringBuffer, {
   },
 
   actions: {
+    refresh: function() {
+
+    },
     pickItem: function(ev){
       this.get("controller").send("imageSelected", this.get("result.file"))
     }
   },
 
-  imagePath: function(){
+  imagePath: function() {
     if (this.get("selected")) {
       return this.get("result.file");
     } else {
