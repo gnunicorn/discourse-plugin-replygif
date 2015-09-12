@@ -9,14 +9,14 @@ export default TextField.extend({
         selected = [];
 
     this.$().val(this.get('tags')).autocomplete({
-      template: this.container.lookup('template:tag-selector-autocomplete.raw'),
+      template: this.container.lookup('template:replygif-tag-selector-autocomplete.raw'),
       disabled: this.get('disabled'),
 
       dataSource: function(term) {
         self.set("search", term.toLowerCase());
         var searchTerm = self.get("search");
         return self.get("datasource").filter(function(item) {
-          return item.title.toLowerCase().match(searchTerm);
+          return item.title.toLowerCase().match(new RegExp("^" + searchTerm + ".*"));
         }).uniq();
       },
 
