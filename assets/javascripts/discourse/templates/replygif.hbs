@@ -19,6 +19,9 @@
       {{i18n "loading"}}
     {{else}}
       <div class="replygif-box">
+        {{#each result in currentGifs}}
+          {{replygif-result datasource=result}}
+        {{/each}}
       </div>
     {{/if}}
   </div>
