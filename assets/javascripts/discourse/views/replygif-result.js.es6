@@ -8,7 +8,7 @@ export default Ember.View.extend(StringBuffer, {
   rawTemplate: "replygif-result.raw",
 
   selectedChanged: function() {
-
+    this.rerender();
   }.observes('selected'),
 
   click: function() {
