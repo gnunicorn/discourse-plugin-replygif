@@ -5,6 +5,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   categories: [],
   selectedTags: [],
   currentGifs: [],
+  tags: [],
 
   loadingTags: function(){
     return this.get("categories").length === 0;
@@ -46,7 +47,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   init: function () {
     this._super();
-    this.setProperties({"loading": true, "categories": [], "selectedCategory": ""});
+    this.setProperties({"loading": true, "categories": [], "selectedCategory": "", tags: []});
 
     this.addObserver("selectedCategory", function() {
       this.refresh();
@@ -62,6 +63,12 @@ export default Ember.Controller.extend(ModalFunctionality, {
         this.set("selectedCategory", this.get("filterCategories")[0].title);
         this.refresh();
       }.bind(this)
+    );
+
+    Discourse.ajax(this.getUrl("tags")).then(
+        function(resp) {
+          this.set("tags", resp);
+        }.bind(this)
     );
   },
 
