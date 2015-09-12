@@ -1,6 +1,7 @@
 import StringBuffer from 'discourse/mixins/string-buffer';
 
 export default Ember.View.extend(StringBuffer, {
+  result: Em.computed.alias("content"),
   tagName: "div",
   selected: false,
   classNames: ["replygif-imgwrap"],

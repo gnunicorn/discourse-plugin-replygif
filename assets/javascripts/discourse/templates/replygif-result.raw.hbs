@@ -1,4 +1,1 @@
-<img class="replygif-img" {{bind-attr src=imagePath}}>
-{{#if selected}}
-    <button class="btn btn-primary" {{action "pickItem" target=view}}>{{i18n "reply_gif.select"}}</button>
-{{/if}}
+<img class="replygif-img" src="{{result.imagePath}}">
