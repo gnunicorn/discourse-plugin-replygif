@@ -9,7 +9,7 @@ export default Ember.View.extend(StringBuffer, {
 
   selectedChanged: function() {
     this.rerender();
-  }.observe("selected"),
+  }.observes("selected"),
 
   click: function() {
     this.set("selected", !this.get("selected"))
