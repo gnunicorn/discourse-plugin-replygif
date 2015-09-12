@@ -17,15 +17,15 @@ export default TextField.extend({
         var searchTerm = self.get("search");
         return self.get("datasource").filter(function(item) {
           return item.title.toLowerCase().match(new RegExp("^" + searchTerm + ".*"));
-        }).uniq();
+        }).uniq().slice(0, 10);
       },
-
-      onChangeItems: function(items) {
-        items = items.map(function(i) {
-          return i.title ? i.title : i;
-        });
-        self.set('tags', items.join(","));
-        selected = items;
+      transformComplete: function(item) {
+        return item.title;
+      },
+      onChangeItems: function(items){
+        self.get("controller.selectedTags").setObjects(items);
+        self.get("controller").refresh();
+        self.$().autocomplete({ cancel: true })
       }
     });
   }.on('didInsertElement'),
