@@ -17,7 +17,7 @@ export default TextField.extend({
         var searchTerm = self.get("search");
         return self.get("datasource").filter(function(item) {
           return item.title.toLowerCase().match(new RegExp("^" + searchTerm + ".*"));
-        }).uniq().map('title');
+        }).uniq().mapBy('title');
       },
 
       onChangeItems: function(items) {
