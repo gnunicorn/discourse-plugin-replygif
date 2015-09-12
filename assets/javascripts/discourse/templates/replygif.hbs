@@ -4,12 +4,12 @@
       {{i18n "loading"}}
     {{else }}
       <div class="categories">
-        <label for="categories">Categories</label>
+        <label for="categories">{{i18n "replygif.categories"}}</label>
         {{combo-box name="categories" valueAttribute="title" value=controller.selectedCategory
           nameProperty="title" content=filterCategories none="replygif.none" }}
       </div>
       <div class="tags">
-        <label for="replygif-tag-selector">Tags</label>
+        <label for="replygif-tag-selector">{{i18n "replygif.tags"}}</label>
         {{replygif-tag-selector name="replygif-tag-selector" datasource=controller}}
       </div>
     {{/if}}
