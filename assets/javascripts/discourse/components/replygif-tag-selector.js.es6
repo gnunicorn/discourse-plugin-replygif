@@ -38,7 +38,7 @@ export default TextField.extend({
   _clearInput: function() {
     if (arguments.length > 1) {
       if (Em.isEmpty(this.get("tags"))) {
-        this.$().parent().find("a").click();
+       // this.$().parent().find("a").click();
       }
     }
   }.observes("tags")
