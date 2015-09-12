@@ -1,7 +1,7 @@
 import TextField from 'discourse/components/text-field';
 
 export default TextField.extend({
-  datasource: [],
+  datasource: undefined,
   search: "",
 
   _initializeAutocomplete: function() {
@@ -15,16 +15,18 @@ export default TextField.extend({
       dataSource: function(term) {
         self.set("search", term.toLowerCase());
         var searchTerm = self.get("search");
-        return self.get("datasource").filter(function(item) {
-          return item.title.toLowerCase().match(new RegExp("^" + searchTerm + ".*"));
+        return self.get("datasource.tags").filter(function(item) {
+          return item.title.match(new RegExp("^" + searchTerm + ".*", "i"));
         }).uniq().slice(0, 10);
       },
+
       transformComplete: function(item) {
         return item.title;
       },
+
       onChangeItems: function(items){
-        self.get("controller.selectedTags").setObjects(items);
-        self.get("controller").refresh();
+        self.get("datasource.selectedTags").setObjects(items);
+        self.get("datasource").refresh();
         self.$().autocomplete({ cancel: true })
       }
     });
