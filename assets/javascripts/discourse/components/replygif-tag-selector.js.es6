@@ -36,13 +36,4 @@ export default TextField.extend({
     this.$().autocomplete('destroy');
   }.on('willDestroyElement'),
 
-  // THIS IS A HUGE HACK TO SUPPORT CLEARING THE INPUT
-  _clearInput: function() {
-    if (arguments.length > 1) {
-      if (Em.isEmpty(this.get("tags"))) {
-       // this.$().parent().find("a").click();
-      }
-    }
-  }.observes("tags")
-
 });
