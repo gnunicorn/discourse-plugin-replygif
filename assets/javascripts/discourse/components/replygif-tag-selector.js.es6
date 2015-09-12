@@ -34,6 +34,6 @@ export default TextField.extend({
 
   _removeAutocomplete: function() {
     this.$().autocomplete('destroy');
-  }.on('willDestroyElement'),
+  }.on('willDestroyElement')
 
 });
