@@ -16,7 +16,6 @@ export default TextField.extend({
         return self.get("datasource").filter(function(item) {
           return item.title.toLowerCase().match(search);
         }).uniq();
-        }
       },
 
       onChangeItems: function(items) {
