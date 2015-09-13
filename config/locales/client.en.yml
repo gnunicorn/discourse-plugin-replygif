@@ -6,4 +6,4 @@ en:
       none: "(none)"
       categories: "Categories"
       tags: "Tags"
-      select: "Select"
+      insert: "Insert Selected Images"

@@ -20,14 +20,6 @@ export default Ember.Controller.extend(ModalFunctionality, {
     return this.get("categories").filter(function(item) { return item.title.length > 0; }).uniq();
   }.property("categories"),
 
-  selectedGifsChanged: function() {
-    this.rerender();
-  }.observes("selectedGifs"),
-
-  hasSelectedGifs: function() {
-    return this.get("selectedGifs").length > 0 ? "" : "disabled";
-  }.property("selectedGifs"),
-
   actions: {
     pickItem: function(file) {
       var currentSelectedItems = this.get("selectedGifs");
