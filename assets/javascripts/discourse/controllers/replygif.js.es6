@@ -21,7 +21,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   }.property("categories"),
 
   selectedGifChanged: function() {
-    this.rerender();
+    //this.rerender();
   }.observes("selectedGif"),
 
   hasSelectedGif: function() {
