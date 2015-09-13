@@ -21,6 +21,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   }.property("categories"),
 
   selectedGifsChanged: function() {
+    this.rerender();
   }.observes("selectedGifs"),
 
   hasSelectedGifs: function() {
@@ -41,6 +42,8 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   refresh: function() {
     this.set("loading", true);
+    this.set("selectedGifs", []);
+
     var url = this.getUrl("gifs"), to_check = false;
 
     if (this.get("selectedCategory")) {
