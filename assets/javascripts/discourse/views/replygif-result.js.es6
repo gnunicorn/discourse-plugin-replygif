@@ -12,7 +12,7 @@ export default Ember.View.extend(StringBuffer, {
   }.observes('selected'),
 
   click: function() {
-    this.set("selected", !this.get("selected"))
+    this.set("controller.selectedGif", this.get("result.file"));
   },
 
   actions: {
