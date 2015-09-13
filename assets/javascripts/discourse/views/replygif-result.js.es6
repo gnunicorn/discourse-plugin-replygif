@@ -3,25 +3,27 @@ import StringBuffer from 'discourse/mixins/string-buffer';
 export default Ember.View.extend(StringBuffer, {
   result: Em.computed.alias("content"),
   tagName: "div",
-  selected: false,
   classNames: ["replygif-imgwrap"],
   rawTemplate: "replygif-result.raw",
 
-  selectedChanged: function() {
+  isSelected: function() {
+    return this.get("controller.selectedGifs").indexOf(this.get("result.file")) > -1;
+  }.property("controller.selectedGifs"),
+
+  selectedGifsChanged: function() {
     this.rerender();
-  }.observes('selected'),
+  }.observes('controller.selectedGifs'),
 
   click: function() {
-    this.set("selected", !this.get("selected"));
     this.get("controller").send("pickItem", this.get("result.file"));
   },
 
   imagePath: function() {
-    if (this.get("selected")) {
+    if (this.get("controller.selectedGifs").indexOf(this.get("result.file")) > -1) {
       return this.get("result.file");
     } else {
       return this.get("result.file").replace("/i/", "/thumbnail/");
     }
-  }.property("result.file", "selected")
+  }.property("result.file", "controller.selectedGifs")
 
 });
