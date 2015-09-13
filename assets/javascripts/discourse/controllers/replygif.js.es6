@@ -6,7 +6,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   selectedTags: [],
   currentGifs: [],
   tags: [],
-  selectedGif: undefined,
+  selectedGifs: [],
 
   loadingTags: function(){
     return this.get("categories").length === 0;
@@ -20,13 +20,24 @@ export default Ember.Controller.extend(ModalFunctionality, {
     return this.get("categories").filter(function(item) { return item.title.length > 0; }).uniq();
   }.property("categories"),
 
-  selectedGifChanged: function() {
-    //this.rerender();
-  }.observes("selectedGif"),
+  selectedGifsChanged: function() {
+  }.observes("selectedGifs"),
 
-  hasSelectedGif: function() {
-    return this.get("selectedGif") ? "" : "disabled";
-  }.property("selectedGif"),
+  hasSelectedGifs: function() {
+    return this.get("selectedGifs") ? "" : "disabled";
+  }.property("selectedGifs"),
+
+  actions: {
+    pickItem: function(file) {
+      var currentSelectedItems = this.get("selectedGifs");
+      var itemLocation = currentSelectedItems.indexOf(file);
+      if (itemLocation > -1) {
+        currentSelectedItems.splice(itemLocation, 1);
+      } else {
+        currentSelectedItems.push(file);
+      }
+    }
+  },
 
   refresh: function() {
     this.set("loading", true);
@@ -56,7 +67,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
 
   init: function () {
     this._super();
-    this.setProperties({"loading": true, "categories": [], "selectedCategory": "", tags: [], selectedGif: undefined });
+    this.setProperties({"loading": true, "categories": [], "selectedCategory": "", tags: [], selectedGifs: [] });
 
     this.addObserver("selectedCategory", function() {
       this.refresh();

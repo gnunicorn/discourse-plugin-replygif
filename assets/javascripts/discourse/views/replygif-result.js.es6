@@ -13,13 +13,7 @@ export default Ember.View.extend(StringBuffer, {
 
   click: function() {
     this.set("selected", !this.get("selected"));
-    this.set("controller.selectedGif", this.get("result.file"));
-  },
-
-  actions: {
-    pickItem: function(ev){
-      this.get("controller").send("imageSelected", this.get("result.file"))
-    }
+    this.set("controller").send("pickItem", this.get("result.file"));
   },
 
   imagePath: function() {

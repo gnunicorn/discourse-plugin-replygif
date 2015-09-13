@@ -57,11 +57,12 @@
     }
 
     .replygif-img {
+      border: 3px solid transparent;
       width: 100%;
     }
 
     .replygif-img.selected {
-      border: 1px solid $tertiary;
+      border: 3px solid $tertiary;
     }
   }
 }
