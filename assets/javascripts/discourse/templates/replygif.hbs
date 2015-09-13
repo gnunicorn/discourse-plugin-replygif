@@ -1,0 +1,29 @@
+<div class="modal-body replygif-modal" style="overflow: visible">
+  <div>
+    {{#if loadingTags}}
+      {{i18n "loading"}}
+    {{else }}
+      <div class="categories">
+        <label for="categories">{{i18n "replygif.categories"}}</label>
+        {{combo-box name="categories" valueAttribute="title" value=controller.selectedCategory
+          nameProperty="title" content=filterCategories none="replygif.none" }}
+      </div>
+      <div class="tags">
+        <label for="replygif-tag-selector">{{i18n "replygif.tags"}}</label>
+        {{replygif-tag-selector name="replygif-tag-selector" datasource=controller}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="replygif-content">
+    {{#if loading}}
+      {{i18n "loading"}}
+    {{else}}
+      <div class="replygif-box">
+          {{each result in currentGifs itemView="replygif-result"}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary pull-right">{{i18n "replygif.insert"}}</button>
+</div>

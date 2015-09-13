@@ -1,10 +1,11 @@
-# name: replygif
-# about: Adds nice little helper to find and add reaction Gifs from the awesome "replygif.net" library
+# name: discourse-plugin-replygif
+# about: Add ReplyGIF support
 # version: 0.1
-# authors: Benjamin Kampmann
+# authors: Matthew Wilkin
+# url: https://github.com/cpradio/discourse-plugin-replygif
 
+enabled_site_setting :replygif_enabled
 
-register_asset "javascripts/discourse/templates/replygif.js.handlebars"
-register_asset "javascripts/replygif.js"
+register_asset "javascripts/discourse/templates/replygif.hbs"
 
 register_asset 'stylesheets/replygif.scss'

@@ -1,0 +1,10 @@
+plugins:
+  replygif_enabled:
+    default: true
+    client: true
+  replygif_api_url:
+    default: 'http://replygif.net/api/'
+    client: true
+  replygif_api_key:
+    default: '39YAprx5Yi'
+    client: true
