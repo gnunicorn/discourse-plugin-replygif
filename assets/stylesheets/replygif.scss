@@ -4,7 +4,7 @@
 
 .replygif-modal {
   .replygif-content {
-    max-height: 350px;
+    max-height: 335px;
     min-height: 200px;
     overflow-y: scroll;
     clear: both;
@@ -36,68 +36,6 @@
       width: 95% !important;
     }
   }
-  
-  div.autoanimate {
-    float: right;
-    white-space: nowrap;
-  }
-
-  input.replygif-switch:empty
-  {
-    margin-left: -999px;
-  }
-
-  input.replygif-switch:empty ~ label
-  {
-    position: relative;
-    float: left;
-    line-height: 1.6em;
-    text-indent: 4em;
-    margin: 0.2em 0;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  input.replygif-switch:empty ~ label:before,
-  input.replygif-switch:empty ~ label:after
-  {
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    content: ' ';
-    width: 3.6em;
-    background-color: #666;
-    border-radius: 0.3em;
-    box-shadow: inset 0 0.2em 0 rgba(0,0,0,0.3);
-    -webkit-transition: all 100ms ease-in;
-    transition: all 100ms ease-in;
-  }
-
-  input.replygif-switch:empty ~ label:after
-  {
-    width: 1.4em;
-    top: 0.1em;
-    bottom: 0.1em;
-    margin-left: 0.1em;
-    background-color: #fff;
-    border-radius: 0.15em;
-    box-shadow: inset 0 -0.2em 0 rgba(0,0,0,0.2);
-  }
-
-  input.replygif-switch:checked ~ label:before
-  {
-    background-color: $tertiary;
-  }
-
-  input.replygif-switch:checked ~ label:after
-  {
-    margin-left: 2.1em;
-  }
 
   .replygif-box {
 
@@ -118,12 +56,12 @@
       text-align: center;
     }
 
-    .replygif-imgwrap button {
-      width: 100%
-    }
-
     .replygif-img {
       width: 100%;
+    }
+
+    .replygif-img.selected {
+      border: 1px solid $tertiary;
     }
   }
 }
