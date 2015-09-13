@@ -24,7 +24,7 @@ export default Ember.Controller.extend(ModalFunctionality, {
   }.observes("selectedGifs"),
 
   hasSelectedGifs: function() {
-    return this.get("selectedGifs") ? "" : "disabled";
+    return this.get("selectedGifs").length > 0 ? "" : "disabled";
   }.property("selectedGifs"),
 
   actions: {
